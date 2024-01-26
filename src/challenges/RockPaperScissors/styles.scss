@@ -1,0 +1,8 @@
+@import '../../mixins.scss';
+
+.RockPaperScissors {
+    @include pageContainer;
+    @include contentContainer;
+    @include link;
+    @include paragraph;
+}

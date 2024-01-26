@@ -1,4 +1,4 @@
-.App {
+@mixin pageContainer {
   text-align: center;
   background-color: #282c34;
   min-height: 100vh;
@@ -8,7 +8,9 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  
+}
+
+@mixin contentContainer {
   .content {
     display: flex;
     flex-direction: column;
@@ -16,7 +18,15 @@
     justify-content: center;
     max-width: 900px;
   }
-  
+}
+
+@mixin link {
+  .link {
+    color: #ccc;
+  }
+}
+
+@mixin paragraph {
   p {
     font-size: 16px;
     line-height: 30px;

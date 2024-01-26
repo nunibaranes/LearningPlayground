@@ -1,0 +1,8 @@
+@import '../../mixins.scss';
+
+.Home {
+  @include pageContainer;
+  @include contentContainer;
+  @include link;
+  @include paragraph;
+}
