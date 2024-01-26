@@ -1,4 +1,4 @@
-import { Header } from './Header.tsx';
+import { Header } from '../common';
 
 export default {
   title: 'Example/Header',

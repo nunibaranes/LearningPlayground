@@ -1,10 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Button } from './Button.tsx';
+import { Button } from '../Button';
 import './header.scss';
 
-export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
+type HeaderProps = { 
+  user: { name: string };
+  onLogin: () => void;
+  onLogout: () => void;
+  onCreateAccount: () => void;
+};
+
+export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => (
   <header>
     <div className="storybook-header">
       <div>
