@@ -5,4 +5,10 @@
     @include contentContainer;
     @include link;
     @include paragraph;
+    
+    .header {
+        @include flexSpaceBetween;
+        @include maxContentContainer();
+        align-items: center;
+    } 
 }

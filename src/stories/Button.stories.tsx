@@ -1,7 +1,8 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '../common/Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-export default {
+const meta: Meta<typeof Button> = {
   title: 'Example/Button',
   component: Button,
   parameters: {
@@ -16,30 +17,49 @@ export default {
   },
 };
 
+export default meta;
+
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary = {
   args: {
-    primary: true,
-    label: 'Button',
+    children: 'Button',
   },
 };
 
 export const Secondary = {
   args: {
-    label: 'Button',
+    children: 'Button',
+    variant: 'secondary',
   },
 };
+
+
+export const Inverted: StoryObj<typeof Button> = {
+  args: {
+    children: 'Button',
+    variant: 'inverted',
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ backgroundColor: 'black', width: '100%', height: '100%' }}>
+        {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
+        <Story />
+      </div>
+    ),
+  ],
+};
+
 
 export const Large = {
   args: {
     size: 'large',
-    label: 'Button',
+    children: 'Button',
   },
 };
 
 export const Small = {
   args: {
     size: 'small',
-    label: 'Button',
+    children: 'Button',
   },
 };

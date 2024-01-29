@@ -2,7 +2,13 @@
 
 .Challenges {
   @include pageContainer;
-  @include contentContainer;
+  align-items: center;
+  justify-content: center;
+  
+  .content { 
+    @include contentContainer;
+    @include maxContentContainer();
+  }
   @include link;
   @include paragraph;
 }

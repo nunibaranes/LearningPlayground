@@ -1,37 +1,34 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import './button.scss';
 
-type ButtonProps = {
-  primary?: boolean;
+export type ButtonProps = {
+  variant?: 'primary' | 'inverted' | 'secondary';
   backgroundColor?: string;
   size?: 'small' | 'medium' | 'large';
-  label: string;
+  children: ReactNode;
   onClick?: () => void;
 };
 
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary, backgroundColor, size, label, ...props }: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+export const Button = ({ variant = 'primary', backgroundColor, size, children, ...props }: ButtonProps) => {
+  const mode = `storybook-button--${variant}`;
   return (
     <button
       type="button"
       className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={{backgroundColor}}
+      style={variant !== 'inverted' ? {backgroundColor} : undefined}
       {...props}
     >
-      {label}
+      {children}
     </button>
   );
 };
 
 Button.propTypes = {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary: PropTypes.bool,
+  variant: PropTypes.oneOf(['primary', 'inverted', 'secondary']),
   /**
    * What background color to use
    */
@@ -41,18 +38,14 @@ Button.propTypes = {
    */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   /**
-   * Button contents
-   */
-  label: PropTypes.string.isRequired,
-  /**
    * Optional click handler
    */
   onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
-  backgroundColor: null,
-  primary: false,
+  backgroundColor: undefined,
+  variant: 'primary',
   size: 'medium',
   onClick: undefined,
 };
